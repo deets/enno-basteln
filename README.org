@@ -1,0 +1,70 @@
+* Enno Basteln
+
+** Installation
+
+https://docs.micropython.org/en/latest/esp32/tutorial/intro.html
+
+
+#+begin_src
+ pip install esptool adafruit-ampy
+ pipenv run esptool.py --chip esp32 --port /dev/tty.usbserial-0001 erase_flash
+#+end_src
+
+Download https://micropython.org/resources/firmware/esp32-20230426-v1.20.0.bin
+
+#+begin_src
+esptool.py --chip esp32 --port /dev/tty.usbserial-0001 --baud 460800 write_flash -z 0x1000 ~/Downloads/esp32-20230426-v1.20.0.bin
+#+end_src
+
+
+** Connecting to uPy REPL
+
+#+begin_src
+screen /dev/tty.usbserial-0001 115200
+#+end_src
+
+
+** Deploying Code
+
+=adafruit-ampy= contains the =ampy= command that allows to publish code to the uPy device. Create a main with the following contents:
+
+#+begin_src  python
+import time
+
+while True:
+  time.sleep_ms(100)
+  print("hallo welt")
+#+end_src
+
+Then use
+
+#+begin_src bash
+ampy --port /dev/tty.usbserial-0001 put main.py
+#+end_src
+
+
+** ST7735
+
+AZ Delivery: https://www.az-delivery.de/en/products/1-77-zoll-spi-tft-display
+
+https://cdn.shopify.com/s/files/1/1509/1638/files/1.77_inch_TFT_Display_-_pinout.jpg?v=1593150369
+
+Pinout left to right, as seen from top, with the pins pointing away,
+and the silkscreen text '1.77" 160(RGB)x128' at the bottom.
+
+
+|-----+------------+-----------|
+| Pin | Silkscreen | Function  |
+|-----+------------+-----------|
+|   1 | GND        | GND       |
+|   2 | VCC        | VCC       |
+|   3 | SCK        | SPI CLK   |
+|   4 | SDA        | SPI MOSI  |
+|   5 | RES        | Reset     |
+|   6 | RS         | DC        |
+|   7 | CS         | CS        |
+|   8 | LEDA       | Backlight |
+|-----+------------+-----------|
+
+
+uPy driver from https://github.com/boochow/MicroPython-ST7735
