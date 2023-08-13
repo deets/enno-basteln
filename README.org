@@ -62,18 +62,18 @@ Pinout left to right, as seen from top, with the pins pointing away,
 and the silkscreen text '1.77" 160(RGB)x128' at the bottom.
 
 
-|-----+------------+-----------|
-| Pin | Silkscreen | Function  |
-|-----+------------+-----------|
-|   1 | GND        | GND       |
-|   2 | VCC        | VCC       |
-|   3 | SCK        | SPI CLK   |
-|   4 | SDA        | SPI MOSI  |
-|   5 | RES        | Reset     |
-|   6 | RS         | DC        |
-|   7 | CS         | CS        |
-|   8 | LEDA       | Backlight |
-|-----+------------+-----------|
+|-----+------------+-----------+-------|
+| Pin | Silkscreen | Function  | ESP32 |
+|-----+------------+-----------+-------|
+|   1 | GND        | GND       | GND   |
+|   2 | VCC        | VCC       | 3V3   |
+|   3 | SCK        | SPI CLK   | G14   |
+|   4 | SDA        | SPI MOSI  | G13   |
+|   5 | RES        | Reset     | G17   |
+|   6 | RS         | DC        | G16   |
+|   7 | CS         | CS        | G18   |
+|   8 | LEDA       | Backlight | 3V3   |
+|-----+------------+-----------+-------|
 
 
 uPy driver from https://github.com/boochow/MicroPython-ST7735
