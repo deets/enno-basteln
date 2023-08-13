@@ -42,6 +42,15 @@ Then use
 ampy --port /dev/tty.usbserial-0001 put main.py
 #+end_src
 
+*ATTENTION*: if you can't connect, it might be necessary to go to the
+REPL (via screen for example) and C-c the program running. Then =ampy=
+might work. If not, additionally remove the =main.py= and possibly =boot.py= via
+
+#+begin_src python
+import os;  os.remove("main.py");  os.remove("boot.py")
+#+end_src
+
+
 
 ** ST7735
 
@@ -68,3 +77,21 @@ and the silkscreen text '1.77" 160(RGB)x128' at the bottom.
 
 
 uPy driver from https://github.com/boochow/MicroPython-ST7735
+
+
+** Mosquitto
+
+*** Mac
+
+Installed and run via =homebrew=
+
+#+begin_src bash
+brew install mosquitto
+brew services start mosquitto
+#+end_src
+
+Configuration file:
+
+#+begin_src bash
+  /opt/homebrew/etc/mosquitto/mosquitto.conf
+#+end_src
