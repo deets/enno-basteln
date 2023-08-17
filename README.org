@@ -23,6 +23,9 @@ esptool.py --chip esp32 --port /dev/tty.usbserial-0001 --baud 460800 write_flash
 screen /dev/tty.usbserial-0001 115200
 #+end_src
 
+*** Using Copy & Paste Mode
+
+https://docs.micropython.org/en/latest/reference/repl.html#paste-mode
 
 ** Deploying Code
 
